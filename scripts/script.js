@@ -135,8 +135,6 @@ function renderInterView(){
             `
          filterSection.appendChild(section);   
     }else{
-
-    
     for(let list of interViewList){
         const div = document.createElement("div");
         div.className = "job-card p-7 bg-white rounded-md border border-green-400 shadow-sm hover:shadow-md flex justify-between border-l-6";
@@ -161,8 +159,22 @@ function renderInterView(){
         filterSection.appendChild(div);
     }}
 }
+
 function renderRejected(){
     filterSection.innerHTML = "";
+    if(rejectedList.length<=0){
+            const section = document.createElement("section");
+            section.className = "no-jobs ";
+            section.innerHTML = `
+            <div class="text-center bg-white py-20 rounded-md border-gray-200 shadow-md"> 
+                <img src="./assets/images/jobs.png" alt="" class="mx-auto mb-5">
+                <h2 class="mb-1 font-semibold text-2xl text-[#002C5C]">No jobs available</h2>
+                <p class="text-lg text-[#64748B]">Check back soon for new job opportunities</p>
+            </div>
+            `
+         filterSection.appendChild(section);   
+    }else{
+
     for(let list of rejectedList){
         const div = document.createElement("div");
         div.className = "job-card p-7 bg-white rounded-md border border-red-400 shadow-sm hover:shadow-md flex justify-between border-l-6";
@@ -185,6 +197,6 @@ function renderRejected(){
         </div>
         `
         filterSection.appendChild(div);
-    }
+    }}
 }
 
