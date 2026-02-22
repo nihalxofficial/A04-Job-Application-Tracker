@@ -16,17 +16,26 @@ function toggle(id){
     if(id==="all-filter-btn"){
         allCardSection.classList.remove("hidden");
         filterSection.classList.add("hidden");
+        
+        
     }else if(id==="interview-filter-btn"){
         allCardSection.classList.add("hidden");
         filterSection.classList.remove("hidden");
         renderInterView();
+        
+        
+       
     }else if(id==="rejected-filter-btn"){
         allCardSection.classList.add("hidden");
         filterSection.classList.remove("hidden");
         renderRejected();
+        
     }
-
+    
 }
+
+
+
 
 
 mainSection.addEventListener("click", function(event){
@@ -73,6 +82,7 @@ mainSection.addEventListener("click", function(event){
     }else if(event.target.classList.contains("rejected-btn")){
         let parentNode = event.target.parentElement.parentElement.parentElement;
         parentNode.classList.remove("border-gray-200");
+        parentNode.classList.remove("border-green-200");
         parentNode.classList.add("border-red-400");
         
 
@@ -111,10 +121,22 @@ mainSection.addEventListener("click", function(event){
     }
 })
 
-
-
 function renderInterView(){
     filterSection.innerHTML = "";
+    if(interViewList.length<=0){
+            const section = document.createElement("section");
+            section.className = "no-jobs ";
+            section.innerHTML = `
+            <div class="text-center bg-white py-20 rounded-md border-gray-200 shadow-md"> 
+                <img src="./assets/images/jobs.png" alt="" class="mx-auto mb-5">
+                <h2 class="mb-1 font-semibold text-2xl text-[#002C5C]">No jobs available</h2>
+                <p class="text-lg text-[#64748B]">Check back soon for new job opportunities</p>
+            </div>
+            `
+         filterSection.appendChild(section);   
+    }else{
+
+    
     for(let list of interViewList){
         const div = document.createElement("div");
         div.className = "job-card p-7 bg-white rounded-md border border-green-400 shadow-sm hover:shadow-md flex justify-between border-l-6";
@@ -123,7 +145,7 @@ function renderInterView(){
                 <h2 class="job-companies mb-1 font-semibold text-lg text-[#002C5C]">${list.jobCompany}</h2>
                 <p class="job-title text-[#64748B]">${list.jobTitle}</p>
                 <p class="job-info my-5 text-[#64748B]">${list.jobInfo}</p>
-                <h2 class="job-status text-[#002C5C] bg-[#EEF4FF] inline-block px-3 py-2 font-semibold text-sm rounded">${list.jobStatus}</h2>
+                <h2 class="job-status text-[#002C5C] bg-green-200 inline-block px-3 py-2 font-semibold text-sm rounded">${list.jobStatus}</h2>
                 <p class="job-description mt-2 mb-5">${list.jobDescription}</p>
 
                 <div class="job-card-buttons flex gap-3">
@@ -137,7 +159,7 @@ function renderInterView(){
         </div>
         `
         filterSection.appendChild(div);
-    }
+    }}
 }
 function renderRejected(){
     filterSection.innerHTML = "";
@@ -149,7 +171,7 @@ function renderRejected(){
                 <h2 class="job-companies mb-1 font-semibold text-lg text-[#002C5C]">${list.jobCompany}</h2>
                 <p class="job-title text-[#64748B]">${list.jobTitle}</p>
                 <p class="job-info my-5 text-[#64748B]">${list.jobInfo}</p>
-                <h2 class="job-status text-[#002C5C] bg-[#EEF4FF] inline-block px-3 py-2 font-semibold text-sm rounded">${list.jobStatus}</h2>
+                <h2 class="job-status text-[#002C5C] bg-red-200 inline-block px-3 py-2 font-semibold text-sm rounded">${list.jobStatus}</h2>
                 <p class="job-description mt-2 mb-5">${list.jobDescription}</p>
 
                 <div class="job-card-buttons flex gap-3">
@@ -165,3 +187,4 @@ function renderRejected(){
         filterSection.appendChild(div);
     }
 }
+

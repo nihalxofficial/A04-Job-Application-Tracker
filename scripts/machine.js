@@ -4,6 +4,8 @@ let rejectedList = [];
 
 let mainSection = document.querySelector("main");
 let allCardSection = document.querySelector("#job-listings");
+let noJobSection = document.querySelector(".no-jobs");
+
 let filterSection = document.getElementById("filtered-listings");
 
 let currentStatus = "filtered-listings";
