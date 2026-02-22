@@ -9,8 +9,9 @@ function toggle(id){
 
 
     const selected = document.getElementById(id);
-    
     selected.classList.add('btn-primary');
+
+    currentStatus = id;
 
     if(id==="all-filter-btn"){
         allCardSection.classList.remove("hidden");
@@ -28,10 +29,11 @@ function toggle(id){
 }
 
 
-allCardSection.addEventListener("click", function(event){
+mainSection.addEventListener("click", function(event){
     if(event.target.classList.contains("interview-btn")){
         let parentNode = event.target.parentElement.parentElement.parentElement;
         parentNode.classList.remove("border-gray-200");
+        parentNode.classList.remove("border-red-400");
         parentNode.classList.add("border-green-400");
         
 
@@ -43,6 +45,7 @@ allCardSection.addEventListener("click", function(event){
         
         jobStatus =  parentNode.querySelector(".job-status").innerText = "INTERVIEW";
         parentNode.querySelector(".job-status").classList.remove("bg-[#EEF4FF]");
+        parentNode.querySelector(".job-status").classList.remove("bg-red-200");
         parentNode.querySelector(".job-status").classList.add("bg-green-200");
         
 
@@ -60,6 +63,11 @@ allCardSection.addEventListener("click", function(event){
         }
 
         rejectedList = rejectedList.filter(item => item.jobTitle !== job.jobTitle);
+        
+        if(currentStatus==="rejected-filter-btn"){
+            renderRejected();
+        }
+
         calculateCount();
         
     }else if(event.target.classList.contains("rejected-btn")){
@@ -93,10 +101,17 @@ allCardSection.addEventListener("click", function(event){
         }
 
         interViewList = interViewList.filter(item => item.jobTitle !== job.jobTitle);
+        if(currentStatus==="interview-filter-btn"){
+            console.log(currentStatus);
+            renderInterView();
+        }
+
         calculateCount();
         
     }
 })
+
+
 
 function renderInterView(){
     filterSection.innerHTML = "";

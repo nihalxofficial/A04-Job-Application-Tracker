@@ -1,8 +1,12 @@
 let interViewList = [];
 let rejectedList = [];
 
+
+let mainSection = document.querySelector("main");
 let allCardSection = document.querySelector("#job-listings");
 let filterSection = document.getElementById("filtered-listings");
+
+let currentStatus = "filtered-listings";
 
 function calculateCount(){
     let total = document.getElementById("total-counter");
