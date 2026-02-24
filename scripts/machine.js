@@ -62,21 +62,27 @@ let all = [
 
 let mainSection = document.querySelector("main");
 let allCardSection = document.getElementById("job-listings");
-
-// let noJobSection = document.querySelector(".no-jobs");
-
 let filterSection = document.getElementById("filtered-listings");
 
 let currentStatus = "filtered-listings";
 
 
+let totalJobListingsCounter = document.querySelectorAll(".total-job-listings-counter");
+let interviewJobListingsCounter = document.getElementById("interview-job-listings-counter");
+let rejectedJobListingsCounter = document.getElementById("rejected-job-listings-counter");
+
+
+let totalJobListingsTitle = document.getElementById("total-job-listings-title");
+let interviewJobListingsTitle = document.getElementById("interview-job-listings-title");
+let rejectedJobListingsTitle = document.getElementById("rejected-job-listings-title");
+
+
 
 function calculateCount(){
+
     let total = document.getElementById("total-counter");
     let interview = document.getElementById("interview-counter");
     let rejected = document.getElementById("rejected-counter");
-    
-    
     
     let interviewCount = interViewList.length;
     let rejectedCount = rejectedList.length;
@@ -84,8 +90,13 @@ function calculateCount(){
     total.innerText = all.length;
     interview.innerText = interviewCount;
     rejected.innerText = rejectedCount;
-    
+
+    totalJobListingsCounter.forEach(element => {
+    element.innerText = all.length;
+    });
+    interviewJobListingsCounter.innerText = interViewList.length;
+    rejectedJobListingsCounter.innerText = rejectedList.length;
+
+
 }
-
 calculateCount();
-

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A-04 | Job Tracker</title>
+    <title>A04 | Job Tracker</title>
 
     <!-- Google Fonts -->
      <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,7 +23,7 @@
 </head>
 <body class=" bg-[#F8FAFC] pt-[60px] pb-[130px]">
 
-    <header class="w-10/12 mx-auto border-b-2 border-gray-200 pb-7.5">
+    <header class="w-10/12 mx-auto border-b-2 border-gray-200 bg-[#F8FAFC] pb-7.5 sticky top-0 z-50">
         <h2 class="font-bold text-3xl mb-5">Job Application Tracker</h2>
         <div class="header-container grid grid-cols-1 md:grid-cols-3 gap-4">
             <div class="bg-white p-5 rounded-md border-gray-200 shadow-sm">
@@ -42,10 +42,12 @@
     </header>
 
     <main>
-        <section class="w-10/12 mx-auto pt-7.5 ">
+        <section class=" w-10/12 mx-auto pt-7.5 ">
             <div class="mb-6 flex justify-between items-center">
                 <h2 class="text-[20px] font-bold ">Available Jobs</h2>
-                <h2><span id="total-job-listings">8</span> Jobs</h2>
+                <h2 id="total-job-listings-title"><span class="total-job-listings-counter">8</span> Jobs</h2>
+                <h2 id="interview-job-listings-title" class="hidden"> <span id="interview-job-listings-counter">0</span> Out of <span class="total-job-listings-counter">8</span> Jobs</span> </h2>
+                <h2 id="rejected-job-listings-title" class="hidden"> <span id="rejected-job-listings-counter">0</span> Out of <span class="total-job-listings-counter">8</span> Jobs</h2>
             </div>
             <div class="tab gap-4 mb-4 -ml-2.5">
                 <button onclick="toggle('all-filter-btn')" id="all-filter-btn" class="btn btn-primary px-6 py-2">All</button>
@@ -55,10 +57,7 @@
         </section>
 
         <section id="job-listings" class="w-10/12 mx-auto space-y-4">
-            <!-- Card 01 -->
-            <!-- 
             
-            -->
         </section>
 
         <section id="filtered-listings" class="w-10/12 mx-auto space-y-4 hidden">

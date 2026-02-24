@@ -16,12 +16,22 @@ function toggle(id){
     if(id==="all-filter-btn"){
         allCardSection.classList.remove("hidden");
         filterSection.classList.add("hidden");
+
+        totalJobListingsTitle.classList.remove("hidden");
+        interviewJobListingsTitle.classList.add("hidden");
+        rejectedJobListingsTitle.classList.add("hidden");
+
         renderAllJobs();
         
         
     }else if(id==="interview-filter-btn"){
         allCardSection.classList.add("hidden");
         filterSection.classList.remove("hidden");
+
+        totalJobListingsTitle.classList.add("hidden");
+        interviewJobListingsTitle.classList.remove("hidden");
+        rejectedJobListingsTitle.classList.add("hidden");
+
         renderInterView();
         
         
@@ -29,6 +39,11 @@ function toggle(id){
     }else if(id==="rejected-filter-btn"){
         allCardSection.classList.add("hidden");
         filterSection.classList.remove("hidden");
+
+        totalJobListingsTitle.classList.add("hidden");
+        interviewJobListingsTitle.classList.add("hidden");
+        rejectedJobListingsTitle.classList.remove("hidden");
+
         renderRejected();
         
     }
@@ -186,16 +201,14 @@ mainSection.addEventListener("click", function(event){
     }else if(event.target.classList.contains("delete-card") || (event.target.closest(".delete-card"))){
         const cardItem = event.target.closest(".job-card")
         const cardName = cardItem.querySelector(".job-title").innerText;
-        console.log(cardName);
           
 
         all = all.filter(item => item.jobTitle !== cardName);
         interViewList = interViewList.filter(item => item.jobTitle !== cardName);
         rejectedList = rejectedList.filter(item => item.jobTitle !== cardName);
         cardItem.remove();
+        
         calculateCount();
-        // if(currentStatus==="all-filter-btn"){
-        // }
 
         if(currentStatus==="interview-filter-btn"){
             renderInterView();
@@ -213,7 +226,6 @@ function renderInterView(){
     filterSection.innerHTML = "";
     if(interViewList.length<=0){
             const section = document.createElement("section");
-            // section.className = "no-jobs ";
             section.innerHTML = `
             <div class="text-center bg-white py-20 rounded-md border-gray-200 shadow-md"> 
                 <img src="./assets/images/jobs.png" alt="" class="mx-auto mb-5">
@@ -226,7 +238,6 @@ function renderInterView(){
     for(let list of interViewList){
         const div = document.createElement("div");
         div.className = "job-card p-7 bg-white rounded-md shadow-sm hover:shadow-md flex justify-between border border-l-6 border-green-400";
-        // div.classList.add = "border border-green-400"
         div.innerHTML = `
         <div class="card-left">
                 <h2 class="job-companies mb-1 font-semibold text-lg text-[#002C5C]">${list.jobCompany}</h2>
@@ -288,4 +299,3 @@ function renderRejected(){
         filterSection.appendChild(div);
     }}
 }
-
