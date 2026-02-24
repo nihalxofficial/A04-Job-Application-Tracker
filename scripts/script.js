@@ -128,8 +128,8 @@ mainSection.addEventListener("click", function(event){
         }
         
         jobStatus = parentNode.querySelector(".job-status").innerText = "INTERVIEW";
-        // parentNode.querySelector(".job-status").classList.remove("bg-[#EEF4FF]", "bg-red-200");
-        // parentNode.querySelector(".job-status").classList.add("bg-green-200");
+        parentNode.querySelector(".job-status").classList.remove("bg-[#EEF4FF]", "bg-red-200");
+        parentNode.querySelector(".job-status").classList.add("bg-green-200");
         
 
         const job = {
@@ -173,8 +173,8 @@ mainSection.addEventListener("click", function(event){
         }
         
         jobStatus = parentNode.querySelector(".job-status").innerText = "REJECTED";
-        // parentNode.querySelector(".job-status").classList.remove("bg-[#EEF4FF]");
-        // parentNode.querySelector(".job-status").classList.add("bg-red-200");
+        parentNode.querySelector(".job-status").classList.remove("bg-[#EEF4FF]");
+        parentNode.querySelector(".job-status").classList.add("bg-red-200");
         
 
         const job = {
@@ -264,7 +264,6 @@ function renderRejected(){
     filterSection.innerHTML = "";
     if(rejectedList.length<=0){
             const section = document.createElement("section");
-            // section.className = "no-jobs ";
             section.innerHTML = `
             <div class="text-center bg-white py-20 rounded-md border-gray-200 shadow-md"> 
                 <img src="./assets/images/jobs.png" alt="" class="mx-auto mb-5">
